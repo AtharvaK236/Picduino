@@ -11,6 +11,7 @@ This repository currently contains:
 
 > **Status: Alpha / early development.** This project is incomplete and may change. It is not yet a drop-in replacement for the Arduino platform, and it does not support the full Arduino language, core, or library ecosystem. Some features are placeholders. Use it for experimentation, not safety-critical or production projects.
 
+## Important: Bootloader uses pin 33 of pic18f4550 so either dont connect anything on it or connect an LED with an resistor.
 
 ## Current features (Alpha)
 
