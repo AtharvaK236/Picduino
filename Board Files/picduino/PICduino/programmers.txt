@@ -1,0 +1,4 @@
+# The normal Upload action uses the bootloader tool in platform.txt.
+# This entry is only a placeholder: no external programmer integration is supplied.
+picduino.name=PICduino UART Bootloader (not an external programmer)
+picduino.protocol=picduino

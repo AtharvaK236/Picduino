@@ -1,0 +1,31 @@
+name=PICduino
+version=0.4.0
+
+# PICduino PIC18F4550 platform for Arduino IDE 2.3.x.
+# Explicit preprocessor recipe is required: do not derive it from the no-op
+# compile recipe, or Arduino Builder will not produce sketch_merged.cpp.
+compiler.path=
+compiler.c.cmd=python
+compiler.cpp.cmd=python
+compiler.c.flags=
+compiler.cpp.flags=
+
+# Sketch/library preprocessing: write the source to the requested preprocessed path.
+# PICduino's supported-subset translator and XC8 compiler run at combine time.
+recipe.preproc.macros=python "{runtime.platform.path}/tools/picduino_build.py" preproc "{source_file}" "{preprocessed_file_path}"
+
+recipe.c.o.pattern=python "{runtime.platform.path}/tools/picduino_build.py" noop
+recipe.cpp.o.pattern=python "{runtime.platform.path}/tools/picduino_build.py" noop
+recipe.S.o.pattern=python "{runtime.platform.path}/tools/picduino_build.py" noop
+
+recipe.ar.pattern=python "{runtime.platform.path}/tools/picduino_build.py" noop
+recipe.c.combine.pattern=python "{runtime.platform.path}/tools/picduino_build.py" build "{sketch_path}/{build.project_name}" --build-dir "{build.path}" --platform "{runtime.platform.path}" --codeoffset 0x1000
+recipe.objcopy.hex.pattern=python "{runtime.platform.path}/tools/picduino_build.py" noop
+recipe.output.tmp_file={build.path}/{build.project_name}.hex
+recipe.output.save_file={sketch_path}/{build.project_name}.hex
+
+tools.picduino.cmd=python
+tools.picduino.upload.pattern=python "{runtime.platform.path}/tools/pic18f4550_uploader.py" --port "{serial.port}" "{build.path}/{build.project_name}.hex"
+
+picduino.mcu=18F4550
+picduino.codeoffset=0x1000

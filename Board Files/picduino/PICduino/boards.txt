@@ -1,0 +1,17 @@
+# PICduino PIC18F4550 board definition
+picduino18f4550.name=PICduino 18F4550
+picduino18f4550.build.mcu=18F4550
+picduino18f4550.build.f_cpu=48000000L
+picduino18f4550.build.core=picduino
+picduino18f4550.build.variant=pic18f4550
+picduino18f4550.build.board=PICDUINO_18F4550
+picduino18f4550.upload.maximum_size=28672
+picduino18f4550.upload.tool=picduino
+picduino18f4550.upload.protocol=picduino
+picduino18f4550.upload.speed=115200
+picduino18f4550.bootloader.path=bootloaders/pic18f4550
+picduino18f4550.bootloader.file=pic18f4550_bootloader.hex
+
+# Reserved memory: 0x0000-0x0FFF bootloader; application: 0x1000-0x7FFF.
+
+picduino18f4550.build.codeoffset=0x1000
